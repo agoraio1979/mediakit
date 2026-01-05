@@ -38,24 +38,26 @@ I file ottimizzati saranno generati nella cartella `dist/`
 
 ### Configurazione Iniziale
 
-1. **Vai nelle impostazioni del repository GitHub:**
-   - Settings → Pages
-   - Source: seleziona "GitHub Actions"
-
-2. **Aggiorna il file `vite.config.js`:**
+1. **Aggiorna il file `vite.config.js`:**
    - Modifica il campo `base` con il nome del tuo repository:
    ```js
    base: '/nome-del-tuo-repo/'
    ```
 
-3. **Push sul branch main:**
+2. **Push sul branch main:**
    ```bash
    git add .
    git commit -m "Setup Vite with GitHub Pages"
    git push origin main
    ```
 
-Il workflow GitHub Actions si attiverà automaticamente e deploierà il sito su GitHub Pages.
+3. **Configura GitHub Pages:**
+   - Vai su GitHub → Settings → Pages
+   - Source: seleziona "Deploy from a branch"
+   - Branch: seleziona **"gh-pages"** e cartella **"/ (root)"**
+   - Salva
+
+Il workflow GitHub Actions creerà automaticamente il branch `gh-pages` al primo push e deploierà i file compilati.
 
 ### URL del Sito
 Dopo il deploy, il sito sarà disponibile su:
