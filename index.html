@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media Kit | Content Creator Crochet & Knitting</title>
     <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" crossorigin href="/mediakit/assets/index-CJBcL0aU.css">
+  <link rel="stylesheet" crossorigin href="/mediakit/assets/index-BOnPBVUK.css">
 </head>
 <body class="knit-pattern">
 
@@ -44,19 +44,19 @@
                 <!-- Reach -->
                 <div class="card p-10 text-center border-b-4 border-[#d4a373]">
                     <p class="text-gray-400 uppercase tracking-widest text-xs mb-2 font-bold">Reach Mensile</p>
-                    <div class="stat-value">302.393</div>
-                    <p class="text-green-600 font-bold text-sm mt-2">↑ 20.7% Crescita</p>
+                    <div class="stat-value" id="reach-value"></div>
+                    <p class="text-green-600 font-bold text-sm mt-2">↑ <span id="growth-value"></span> Crescita</p>
                 </div>
                 <!-- Total Interactions -->
                 <div class="card p-10 text-center border-b-4 border-[#d4a373]">
                     <p class="text-gray-400 uppercase tracking-widest text-xs mb-2 font-bold">Interazioni Totali</p>
-                    <div class="stat-value">28.734</div>
+                    <div class="stat-value" id="interactions-value"></div>
                     <p class="text-gray-500 text-sm mt-2">Volume di engagement attivo</p>
                 </div>
                 <!-- Followers -->
                 <div class="card p-10 text-center border-b-4 border-[#d4a373]">
                     <p class="text-gray-400 uppercase tracking-widest text-xs mb-2 font-bold">Community</p>
-                    <div class="stat-value">40.000+</div>
+                    <div class="stat-value" id="followers-value"></div>
                     <p class="text-gray-500 text-sm mt-2">Target profilato Crochet/Knit</p>
                 </div>
             </div>
@@ -67,22 +67,59 @@
             <h2 class="text-4xl font-bold mb-10 text-center">Analisi del Coinvolgimento</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
-                    <p class="text-3xl font-bold accent-color">12.661</p>
+                    <p class="text-3xl font-bold accent-color" id="likes-value"></p>
                     <p class="text-xs uppercase text-gray-400 mt-1">Like</p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-sm text-center border-2 border-[#d4a373]">
-                    <p class="text-3xl font-bold accent-color">10.850</p>
+                    <p class="text-3xl font-bold accent-color" id="saves-value"></p>
                     <p class="text-xs uppercase text-gray-500 font-bold mt-1">Salvataggi (Saves)</p>
                     <span class="text-[10px] text-gray-400 block mt-1 italic">Altissimo intento d'acquisto</span>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
-                    <p class="text-3xl font-bold accent-color">1.974</p>
+                    <p class="text-3xl font-bold accent-color" id="shares-value"></p>
                     <p class="text-xs uppercase text-gray-400 mt-1">Condivisioni</p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
-                    <p class="text-3xl font-bold accent-color">192</p>
+                    <p class="text-3xl font-bold accent-color" id="comments-value"></p>
                     <p class="text-xs uppercase text-gray-400 mt-1">Commenti</p>
                 </div>
+                
+            </div>
+
+            <!-- Metriche -->
+        <section class="mb-24 mt-20">
+            <h2 class="text-4xl font-bold mb-10 text-center">Metriche</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="card bg-white p-6 rounded-2xl shadow-sm text-center group relative cursor-help">
+                    <p class="text-3xl font-bold accent-color" id="ERR-value"></p>
+                    <p class="text-xs uppercase text-gray-400 mt-1">ERR</p>
+                    <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 max-w-xs">
+                        Engagement rate by reach medio su <span class="post-number-value"></span> post <span class="date-interval-value"></span>
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-800"></div>
+                    </div>
+                </div>
+                <div class="card bg-white p-6 rounded-2xl shadow-sm text-center group relative cursor-help">
+                    <p class="text-3xl font-bold accent-color" id="ERP-value"></p>
+                    <p class="text-xs uppercase text-gray-400 mt-1">ERP</p>
+                    <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 max-w-xs">
+                        Engagement rate by post medio su <span class="post-number-value"></span> post <span class="date-interval-value"></span>
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-800"></div>
+                    </div>
+                    <!-- <span class="text-[10px] text-gray-400 block mt-1 italic">Altissimo intento d'acquisto</span> -->
+                </div>
+                <div class="card bg-white p-6 rounded-2xl shadow-sm text-center group relative cursor-help">
+                    <p class="text-3xl font-bold accent-color" id="ERI-value"></p>
+                    <p class="text-xs uppercase text-gray-400 mt-1">ERI</p>
+                    <!-- Tooltip -->
+                    <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 max-w-xs">
+                        Engagement rate by impression medio su <span class="post-number-value"></span> post <span class="date-interval-value"></span>
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-800"></div>
+                    </div>
+                </div>
+                <!-- <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
+                    <p class="text-3xl font-bold accent-color" id="comments-value"></p>
+                    <p class="text-xs uppercase text-gray-400 mt-1">Commenti</p>
+                </div> -->
             </div>
 
             <!-- Insight Box -->
@@ -151,6 +188,39 @@
         </footer>
 
     </main>
+
+    <script>
+fetch('./data.json')
+  .then(response => {
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    return response.json();
+  })
+  .then(data => {
+    console.log('Dati caricati:', data);
+    document.getElementById('reach-value').textContent = data.reachMensile || 'N/A';
+    document.getElementById('interactions-value').textContent = data.interazioniTotali || 'N/A';
+    document.getElementById('followers-value').textContent = data.community || 'N/A';
+    document.getElementById('growth-value').textContent = data.crescita+'%' || 'N/A';
+    document.getElementById('likes-value').textContent = data.like || 'N/A';
+    document.getElementById('saves-value').textContent = data.salvataggi || 'N/A';
+    document.getElementById('shares-value').textContent = data.condivisioni || 'N/A';
+    document.getElementById('comments-value').textContent = data.commenti || 'N/A';
+    document.getElementById('ERR-value').textContent = data.average_ERR+'%' || 'N/A';
+    document.getElementById('ERP-value').textContent = data.average_ERP+'%' || 'N/A';
+    document.getElementById('ERI-value').textContent = data.average_ERI+'%' || 'N/A';
+    // document.getElementById('post-number-value').textContent = data.post_number || 'N/A';
+    // document.getElementById('date-interval-value').textContent = 'dal ' + data.date_interval || 'N/A';
+    document.querySelectorAll('.post-number-value').forEach(el => {
+  el.textContent = data.post_number || 'N/A';
+});
+document.querySelectorAll('.date-interval-value').forEach(el => {
+  el.textContent = 'dal ' + data.date_interval || 'N/A';
+});
+  })
+  .catch(error => console.error('❌ Errore:', error));
+
+  
+</script>
 
 </body>
 </html>
