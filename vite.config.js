@@ -6,5 +6,13 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-  }
+    copyPublicDir: true,
+    rollupOptions: {
+      input: {
+        main: './index.html'
+      }
+    }
+  },
+  // Copia i file JSON nella build
+  publicDir: 'public'
 })
