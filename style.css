@@ -63,7 +63,13 @@ h1, h2, h3 {
         margin: 10mm 10mm;
     }
 
-
+.page-break {
+        page-break-after: always; /* legacy */
+        break-after: page;        /* standard moderno */
+        display: block;
+    }
+    /* spacer visibile solo in stampa, forza 20mm di spazio in cima alla pagina successiva */
+    .print-spacer { display: block; height: 10mm; }
 
     /* Optimize header */
     header {
