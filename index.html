@@ -65,7 +65,7 @@
         <!-- Deep Dive: Engagement Quality -->
         <section class="mb-24">
             <h2 class="text-4xl font-bold mb-10 text-center">Coinvolgimento <span class="date-interval-value"></span></h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
                 <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
                     <p class="text-3xl font-bold accent-color" id="likes-value"></p>
                     <p class="text-xs uppercase text-gray-400 mt-1">Like</p>
@@ -82,6 +82,10 @@
                 <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
                     <p class="text-3xl font-bold accent-color" id="comments-value"></p>
                     <p class="text-xs uppercase text-gray-400 mt-1">Commenti</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
+                    <p class="text-3xl font-bold accent-color" id="repost-value"></p>
+                    <p class="text-xs uppercase text-gray-400 mt-1">Repost</p>
                 </div>
                 
             </div>
@@ -208,6 +212,7 @@ fetch('./data.json')
     document.getElementById('ERR-value').textContent = data.average_ERR+'%' || 'N/A';
     document.getElementById('ERP-value').textContent = data.average_ERP+'%' || 'N/A';
     document.getElementById('ERI-value').textContent = data.average_ERI+'%' || 'N/A';
+    document.getElementById('repost-value').textContent= data.repost || 'N/A';
     // document.getElementById('post-number-value').textContent = data.post_number || 'N/A';
     // document.getElementById('date-interval-value').textContent = 'dal ' + data.date_interval || 'N/A';
     document.querySelectorAll('.post-number-value').forEach(el => {
