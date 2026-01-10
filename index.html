@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media Kit | Content Creator Crochet & Knitting</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="stylesheet" crossorigin href="/mediakit/assets/main-DXhl4RuT.css">
 </head>
 <body class="knit-pattern">
@@ -56,7 +57,7 @@
                 </div> -->
                 <div class="w-full grid grid-cols-2 gap-4">
                     <img src="/mediakit/assets/negozio-DUNrQ9kW.jpg?q=80&w=400&h=400&fit=crop" class="rounded-3xl shadow-md rotate-[-2deg]" alt="Crochet 1">
-                    <img src="/mediakit/assets/giorgiaNegozio-C2p6KUMm.jpg" class="rounded-3xl shadow-md translate-y-6  rotate-[+2deg]" alt="Crochet 2">
+                    <img src="/mediakit/assets/mamma_bancone-DLSYmEYs.jpeg" class="rounded-3xl shadow-md translate-y-6  rotate-[+2deg]" alt="Crochet 2">
                 </div>
             <!-- </div> -->
             <div>
@@ -110,11 +111,31 @@
                     <p class="text-gray-500 text-sm mt-2">Volume di engagement attivo</p>
                 </div>
                 <!-- Followers -->
-                <div class="card p-10 text-center border-b-4 border-[#d4a373]">
+                <!-- <div class="card p-10 text-center border-b-4 border-[#d4a373]">
                     <p class="text-gray-400 uppercase tracking-widest text-xs mb-2 font-bold">Community</p>
                     <div class="stat-value" id="followers-value"></div>
                     <p class="text-gray-500 text-sm mt-2">Target profilato Crochet/Knit</p>
+                </div> -->
+
+
+
+                              <div class="card p-10 text-center border-b-4 border-[#d4a373] group relative cursor-help">
+                    <p class="text-gray-400 uppercase tracking-widest text-xs mb-2 font-bold">Community</p>
+                    <div class="stat-value" id="followers-value"></div>
+                    <p class="text-gray-500 text-sm mt-2">Target profilato Crochet/Knit</p>
+                    
+                    <!-- Tooltip con grafico -->
+                    <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-4 w-80 bg-white rounded-xl shadow-2xl p-4 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-50 border border-gray-200">
+                        <p class="text-sm font-bold text-gray-700 mb-3 text-center">Crescita Follower</p>
+                        <div class="h-48">
+                            <canvas id="follower-growth-chart"></canvas>
+                        </div>
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 border-8 border-transparent border-t-white"></div>
+                    </div>
                 </div>
+
+
+
             </div>
         </section>
 
@@ -281,40 +302,99 @@
 
     </main>
 
-    <script>
-fetch('./data.json')
-  .then(response => {
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    return response.json();
-  })
-  .then(data => {
-    console.log('Dati caricati:', data);
-    document.getElementById('reach-value').textContent = data.reachMensile || 'N/A';
-    document.getElementById('interactions-value').textContent = data.interazioniTotali || 'N/A';
-    // document.getElementById('views-value').textContent = data.totalViews || 'N/A';
-    document.getElementById('followers-value').textContent = data.community || 'N/A';
-    document.getElementById('growth-value').textContent = data.crescita+'%' || 'N/A';
-    document.getElementById('likes-value').textContent = data.like || 'N/A';
-    document.getElementById('saves-value').textContent = data.salvataggi || 'N/A';
-    document.getElementById('shares-value').textContent = data.condivisioni || 'N/A';
-    document.getElementById('comments-value').textContent = data.commenti || 'N/A';
-    document.getElementById('ERR-value').textContent = data.average_ERR+'%' || 'N/A';
-    document.getElementById('ERP-value').textContent = data.average_ERP+'%' || 'N/A';
-    document.getElementById('ERI-value').textContent = data.average_ERI+'%' || 'N/A';
-    document.getElementById('repost-value').textContent= data.repost || 'N/A';
-    // document.getElementById('post-number-value').textContent = data.post_number || 'N/A';
-    // document.getElementById('date-interval-value').textContent = 'dal ' + data.date_interval || 'N/A';
-    document.querySelectorAll('.post-number-value').forEach(el => {
-  el.textContent = data.post_number || 'N/A';
-});
-document.querySelectorAll('.date-interval-value').forEach(el => {
-  el.textContent = 'dal ' + data.date_interval || 'N/A';
-});
-  })
-  .catch(error => console.error('❌ Errore:', error));
-
-  
-</script>
+        <!-- filepath: c:\Users\georg\Documents\Repo\mediakit\index.html -->
+        <script>
+    let followerChart = null;
+    
+    fetch('./data.json')
+      .then(response => {
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        return response.json();
+      })
+      .then(data => {
+        console.log('Dati caricati:', data);
+        document.getElementById('reach-value').textContent = data.reachMensile || 'N/A';
+        document.getElementById('interactions-value').textContent = data.interazioniTotali || 'N/A';
+        document.getElementById('followers-value').textContent = data.community || 'N/A';
+        document.getElementById('growth-value').textContent = data.crescita+'%' || 'N/A';
+        document.getElementById('likes-value').textContent = data.like || 'N/A';
+        document.getElementById('saves-value').textContent = data.salvataggi || 'N/A';
+        document.getElementById('shares-value').textContent = data.condivisioni || 'N/A';
+        document.getElementById('comments-value').textContent = data.commenti || 'N/A';
+        document.getElementById('ERR-value').textContent = data.average_ERR+'%' || 'N/A';
+        document.getElementById('ERP-value').textContent = data.average_ERP+'%' || 'N/A';
+        document.getElementById('ERI-value').textContent = data.average_ERI+'%' || 'N/A';
+        document.getElementById('repost-value').textContent= data.repost || 'N/A';
+        
+        document.querySelectorAll('.post-number-value').forEach(el => {
+          el.textContent = data.post_number || 'N/A';
+        });
+        document.querySelectorAll('.date-interval-value').forEach(el => {
+          el.textContent = 'dal ' + data.date_interval || 'N/A';
+        });
+    
+        // Inizializza il grafico della crescita follower
+        if (data.followerGrowth) {
+          // Aspetta un momento per assicurarsi che il canvas sia nel DOM
+          setTimeout(() => {
+            const ctx = document.getElementById('follower-growth-chart');
+            if (ctx) {
+              followerChart = new Chart(ctx.getContext('2d'), {
+                type: 'line',
+                data: {
+                  labels: data.followerGrowth.labels,
+                  datasets: [{
+                    label: 'Follower',
+                    data: data.followerGrowth.values,
+                    borderColor: '#d4a373',
+                    backgroundColor: 'rgba(212, 163, 115, 0.1)',
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#d4a373',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 0,
+                    pointRadius: 0
+                  }]
+                },
+                options: {
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  plugins: {
+                    legend: {
+                      display: false
+                    },
+                    tooltip: {
+                      callbacks: {
+                        label: function(context) {
+                          return context.parsed.y.toLocaleString() + ' follower';
+                        }
+                      }
+                    }
+                  },
+                  scales: {
+                    y: {
+                      beginAtZero: false,
+                      ticks: {
+                        font: { size: 10 },
+                        callback: function(value) {
+                          return value.toLocaleString();
+                        }
+                      }
+                    },
+                    x: {
+                      ticks: {
+                        font: { size: 10 }
+                      }
+                    }
+                  }
+                }
+              });
+            }
+          }, 100);
+        }
+      })
+      .catch(error => console.error('❌ Errore:', error));
+    </script>
 
 </body>
 </html>
