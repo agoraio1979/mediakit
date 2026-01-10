@@ -114,10 +114,21 @@ header .relative.z-10 {
     } */
 
     /* Footer */
-    footer {
+    /* footer {
         display: none !important;
         
-    }
+    } */
+
+    footer {
+    page-break-inside: avoid;
+    page-break-before: auto;
+    margin-top: 1mm;
+    font-size: 10pt;
+}
+
+footer a {
+    color: #d4a373 !important;
+}
 
 
     }
