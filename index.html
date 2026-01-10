@@ -56,7 +56,7 @@
                 </div> -->
                 <div class="w-full grid grid-cols-2 gap-4">
                     <img src="/mediakit/assets/negozio-DUNrQ9kW.jpg?q=80&w=400&h=400&fit=crop" class="rounded-3xl shadow-md rotate-[-2deg]" alt="Crochet 1">
-                    <img src="/mediakit/assets/eli-BYsm2cBS.jpg?q=80&w=400&h=400&fit=crop" class="rounded-3xl shadow-md translate-y-6  rotate-[+2deg]" alt="Crochet 2">
+                    <img src="/mediakit/assets/giorgiaNegozio-C2p6KUMm.jpg" class="rounded-3xl shadow-md translate-y-6  rotate-[+2deg]" alt="Crochet 2">
                 </div>
             <!-- </div> -->
             <div>
@@ -89,7 +89,7 @@
         
         <!-- Key Performance Indicators (KPI) -->
         <section class="mb-10 mt-20">
-            <h2 class="text-4xl font-bold mb-10 text-center">Coinvolgimento <span class="date-interval-value"></span></h2>
+            <h2 class="text-4xl font-bold mb-10 text-center"> </span><img src="/mediakit/assets/igLogo-2I0ACbc2.png" class="inline-flex items-center w-12 h-12 whitespace-nowrap" alt="igLogo"></span> Coinvolgimento <span class="inline-flex items-center gap-2 ml-2 whitespace-nowrap"><span class="date-interval-value"></h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Reach -->
                 <div class="card p-10 text-center border-b-4 border-[#d4a373]">
@@ -98,6 +98,12 @@
                     <p class="text-green-600 font-bold text-sm mt-2">↑ <span id="growth-value"></span> Crescita</p>
                 </div>
                 <!-- Total Interactions -->
+                <!-- <div class="card p-10 text-center border-b-4 border-[#d4a373]">
+                    <p class="text-gray-400 uppercase tracking-widest text-xs mb-2 font-bold">Visualizzazioni Totali</p>
+                    <div class="stat-value" id="views-value"></div>
+                    <p class="text-gray-500 text-sm mt-2">Instagram + Facebook</p>
+                </div> -->
+                <!-- Total Views -->
                 <div class="card p-10 text-center border-b-4 border-[#d4a373]">
                     <p class="text-gray-400 uppercase tracking-widest text-xs mb-2 font-bold">Interazioni Totali</p>
                     <div class="stat-value" id="interactions-value"></div>
@@ -180,17 +186,17 @@
             </div>
 
             <!-- Insight Box -->
-            <div class="mt-8 p-8 card bg-[#fdfaf7] border border-stone-200">
+            <div class="mt-8 p-5 card bg-[#fdfaf7] border border-stone-200">
                 <div class="flex flex-col md:flex-row items-center gap-8">
                     <div class="flex-1 text-center md:text-left">
-                        <h3 class="text-2xl font-bold mb-4">Perché questi numeri contano</h3>
+                        <!-- <h3 class="text-2xl font-bold mb-4">Perché questi numeri contano</h3> -->
                         <p class="text-gray-600 leading-relaxed italic">
-                            "Con oltre <strong>10.000 salvataggi mensili</strong>, i miei contenuti non sono solo visualizzati, ma archiviati dalla community come modelli da seguire. Per un produttore di filati, questo si traduce in un tasso di conversione all'acquisto estremamente elevato: i follower salvano i miei tutorial per poterli replicare acquistando i materiali necessari."
+                            "Con oltre <strong>10.000 salvataggi mensili</strong>, i miei contenuti non sono solo visualizzati, ma archiviati dalla community come modelli da seguire. I miei follower salvano i tutorial per poterli replicare acquistando i materiali necessari."
                         </p>
                     </div>
                     <div class="flex-shrink-0">
                         <div class="accent-bg text-white p-6 rounded-full w-32 h-32 flex flex-col items-center justify-center shadow-lg">
-                            <span class="text-2xl font-bold">1:1</span>
+                            <span class="text-2xl font-bold">~1:1</span>
                             <span class="text-[10px] uppercase text-center font-bold">Like vs Saves</span>
                         </div>
                     </div>
@@ -261,7 +267,11 @@
         <!-- Footer -->
         <footer class="text-center pt-16 border-t border-stone-200">
             <div class="flex justify-center gap-10 text-[#d4a373] font-bold text-lg mb-8">
-                <a href="https://www.instagram.com/Agoraio1979" class="hover:opacity-75">@Agoraio1979</a>
+                <a href="https://www.instagram.com/Agoraio1979" class="hover:opacity-75"></span><img src="/mediakit/assets/igLogo-2I0ACbc2.png" class="inline-flex items-center w-7 h-7 whitespace-nowrap" alt="igLogo"></span> @Agoraio1979</a>
+                <a href="https://www.tiktok.com/@agoraio1979" class="hover:opacity-75"></span><img src="/mediakit/assets/tiktokLogo-DxVFc5wf.png" class="inline-flex items-center w-7 h-7 whitespace-nowrap" alt="igLogo"></span> @Agoraio1979</a>
+                <a href="https://www.facebook.com/agoraio1979/" class="hover:opacity-75"></span><img src="/mediakit/assets/fbLogo-aUJdq5w2.png" class="inline-flex items-center w-7 h-7 whitespace-nowrap" alt="igLogo"></span> @Agoraio1979</a>
+
+
                 <a href="https://www.lagoraio.com/" class="hover:opacity-75">Visita il sito web</a>
             </div>
          <p class="text-gray-400 text-sm italic">"Creando connessioni attraverso ogni singolo punto."</p>
@@ -281,6 +291,7 @@ fetch('./data.json')
     console.log('Dati caricati:', data);
     document.getElementById('reach-value').textContent = data.reachMensile || 'N/A';
     document.getElementById('interactions-value').textContent = data.interazioniTotali || 'N/A';
+    // document.getElementById('views-value').textContent = data.totalViews || 'N/A';
     document.getElementById('followers-value').textContent = data.community || 'N/A';
     document.getElementById('growth-value').textContent = data.crescita+'%' || 'N/A';
     document.getElementById('likes-value').textContent = data.like || 'N/A';
